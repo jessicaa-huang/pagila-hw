@@ -1,10 +1,16 @@
 /*
+  2  * Display the first and last name of each actor in a single column in u    pper case letters.
+  3  * Name the column Actor Name, and sort the results alphabetically.
+  4  *//*
  * Find the actor_id of every actor whose first name starts with the indicated string.
  * Order the results from low to hi.
  */
 CREATE OR REPLACE FUNCTION get_actor_ids(text) RETURNS TABLE(actor_id INTEGER) AS
 $$
--- FIXME: implementation goes here
+  SELECT actor_id
+  FROM actor
+  WHERE first_name ILIKE $1 || '%'
+  ORDER BY actor_id ASC;
 $$
 LANGUAGE SQL
 IMMUTABLE
